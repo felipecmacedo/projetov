@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Projeto Interdisciplinar V</h1>
+    <h3>Sistema de controle de estoque</h3>    
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pessoas" asp-action="Index">
+                                <button class="botao-pessoas">Cadastro de Pessoas</button>                                
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                <button class="botao-produtos">Cadastros de Produtos</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+</div>
+
+
+<style>
+    .botao-pessoas{
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition-duration: 0.4s;
+    }
+
+    .botao-produtos
+    {
+        background-color: #f16156;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition-duration: 0.3s;
+    }
+
+        .botao-pessoas:hover {
+        background-color: #357e38;
+        }
+
+        .botao-produtos:hover {
+        background-color: #cb4d44;            
+        }
+</style>
