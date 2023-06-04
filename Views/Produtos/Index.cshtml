@@ -1,13 +1,15 @@
-﻿@model IEnumerable<ProjetoV.Models.Produtos>
+﻿@model IEnumerable<ProjetoV.Models.Produto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtos";
 }
 
-<h1>Index</h1>
+<h1>Produtos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="NovoProduto">
+        <button class="botao-criar" type="submit">Cadastrar Produto</button>
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -22,32 +24,68 @@
                 @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstoqueDisponivel)
+                @Html.DisplayNameFor(model => model.Quantidade)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdutoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstoqueDisponivel)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    <div class="td-botoes">
+                        <a asp-action="AtualizarProduto" asp-route-produtoId="@item.ProdutoId">
+                            <button class="botao-editar" type="submit">Atualizar</button>
+                        </a>
+
+                        <form asp-action="ExcluirProduto" asp-route-produtoId="@item.ProdutoId">
+                            <button type="submit" class="botao-excluir">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@* --- Estilo dos botões --- *@
+<style>
+    .botao-editar, .botao-excluir, .botao-criar {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition-duration: 0.3s;
+    }
+
+        .botao-criar:hover {
+            background-color: #2fa597;
+        }
+
+        .botao-editar:hover {
+            background-color: #3e8e41;
+        }
+
+        .botao-excluir:hover {
+            background-color: #f44336;
+        }
+</style>
